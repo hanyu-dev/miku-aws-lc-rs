@@ -63,7 +63,7 @@ use crate::ec::{encoding, evp_key_generate};
 use crate::error::{KeyRejected, Unspecified};
 use crate::hex;
 use crate::ptr::ConstPointer;
-pub use ephemeral::{agree_ephemeral, EphemeralPrivateKey};
+pub use ephemeral::{agree_ephemeral, agree_ephemeral_ref, EphemeralPrivateKey};
 
 use crate::aws_lc::{
     EVP_PKEY_derive, EVP_PKEY_derive_init, EVP_PKEY_derive_set_peer, EVP_PKEY_get0_EC_KEY,

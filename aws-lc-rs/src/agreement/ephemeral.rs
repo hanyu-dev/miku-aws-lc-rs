@@ -110,6 +110,22 @@ where
     agree(&my_private_key.0, peer_public_key, error_value, kdf)
 }
 
+#[inline]
+#[allow(clippy::needless_pass_by_value)]
+#[allow(clippy::missing_panics_doc)]
+#[allow(clippy::module_name_repetitions)]
+pub fn agree_ephemeral_ref<B: AsRef<[u8]>, F, R, E>(
+    my_private_key: &EphemeralPrivateKey,
+    peer_public_key: &UnparsedPublicKey<B>,
+    error_value: E,
+    kdf: F,
+) -> Result<R, E>
+where
+    F: FnOnce(&[u8]) -> Result<R, E>,
+{
+    agree(&my_private_key.0, peer_public_key, error_value, kdf)
+}
+
 #[cfg(test)]
 mod tests {
     use crate::agreement::{AlgorithmID, PublicKey};
